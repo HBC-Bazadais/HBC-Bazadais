@@ -192,7 +192,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--blanc);
 .dt{width:100%;border-collapse:collapse}
 .dt th{font-size:.65rem;font-weight:600;letter-spacing:.12em;color:rgba(255,252,237,.35);text-transform:uppercase;padding:.8rem 1.2rem;text-align:left;background:rgba(255,255,255,.02)}
 .dt td{padding:.85rem 1.2rem;font-size:.83rem;color:rgba(255,252,237,.7);border-top:1px solid rgba(255,255,255,.03)}
-.dt tr.me td{background:rgba(234,59,121,.07);color:var(--blanc);font-weight:600}
 .dt tr:hover td{background:rgba(255,255,255,.02)}
 
 /* ── BOUTIQUE ── */
@@ -1040,7 +1039,7 @@ function buildSub(type, team) {
           const statut = String(r.c[5]?.v ?? '').toLowerCase().trim();
           const isHome = String(dom).toLowerCase().includes('bazadais');
           const isAway = String(ext).toLowerCase().includes('bazadais');
-          const hi     = (isHome||isAway) ? ' class="me"' : '';
+          const hi     = '';
           let statHtml = '—';
           if (statut === 'joue' || statut === 'joué') {
             const sd = parseFloat(sdom), se = parseFloat(sext);
