@@ -1055,13 +1055,13 @@ function buildSub(type, team) {
             const col  = won ? '#4ade80' : lost ? 'var(--rose)' : 'rgba(255,252,237,.4)';
             statHtml   = `<span style="color:${col};font-weight:600">${won?'Victoire ✓':lost?'Défaite':'Nul'}</span>`;
           } else if (statut === 'a_venir' || statut === 'à venir') {
-            statHtml = `<span style="color:var(--rose)">À venir</span>`;
+            statHtml = `<span style="color:#5BB8F5">À venir</span>`;
           } else if (statut === 'reporte' || statut === 'reporté') {
             statHtml = `<span style="color:rgba(255,252,237,.4)">Reporté</span>`;
           }
           const score = (statut==='joue'||statut==='joué') ? `<strong>${sdom} – ${sext}</strong>` : '–';
-          const domHtml = isHome ? `<span style="font-weight:700;font-size:1rem;color:var(--blanc)">${dom}</span>` : dom;
-          const extHtml = isAway ? `<span style="font-weight:700;font-size:1rem;color:var(--blanc)">${ext}</span>` : ext;
+          const domHtml = isHome ? `<span style="font-weight:700;font-size:1rem;color:var(--blanc);text-decoration:underline">${dom}</span>` : dom;
+          const extHtml = isAway ? `<span style="font-weight:700;font-size:1rem;color:var(--blanc);text-decoration:underline">${ext}</span>` : ext;
           return `<tr${hi}><td>${date}</td><td>${domHtml}</td><td style="text-align:center">${score}</td><td>${extHtml}</td><td>${statHtml}</td></tr>`;
         }).join('');
         container.innerHTML = `
