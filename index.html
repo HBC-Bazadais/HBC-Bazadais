@@ -1034,7 +1034,7 @@ function buildSub(type, team) {
           return v !== null && v !== undefined && String(v).toLowerCase() !== 'date';
         });
         if (!dataRows.length) {
-          container.innerHTML = `<div class="soon-box"><div class="soon-chip">🔜 À venir</div><h4>Calendrier non disponible</h4><p>Remplis l'onglet <strong>${team.id}</strong> dans le Google Sheets.</p></div>`;
+          container.innerHTML = `<div class="soon-box"><div class="soon-chip">🔜 À venir</div><h4>Calendrier non disponible</h4><p>Aucun match n’a été joué pour la saison 2026/2027. Aucune information n’est disponible.</p></div>`;
           return;
         }
         const tbody = dataRows.map(r => {
