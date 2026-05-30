@@ -548,7 +548,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 <div id="pg-partners" class="page">
   <div class="page-hero"><div class="page-hero-inner"><div class="ph-label">Ils nous soutiennent</div><h1 class="ph-h1">Nos Partenaires</h1></div></div>
   <div class="container" style="padding-top:3rem;padding-bottom:5rem">
-    <div class="part-grid" id="partGrid"></div>
     <div class="recruit-box"><h3>Devenez Partenaire</h3><p>Associez votre image à celle du HBC Bazadais et soutenez le sport local en Gironde.</p><a href="#" class="btn-p" onclick="goNav('contact','partenaire')">Nous contacter →</a></div>
   </div>
 </div>
@@ -656,7 +655,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 
 <!-- ══ FOOTER ══ -->
 <footer>
-  <div class="fcar-wrap"><div class="fcar-inner" id="fcarInner"></div></div>
   <div class="footer-main">
     <div class="footer-brand">
       <a class="flogo" href="#" onclick="goNav('home')">
@@ -774,27 +772,7 @@ const TEAMS = [
   ]},
 ];
 
-const PARTNERS = [
-  {name:'Mairie de Bazas',type:'Collectivité',url:'https://www.ville-bazas.fr/',logo:'ville-bazas.png',desc:'Partenaire institutionnel du club, la Mairie de Bazas soutient activement la vie sportive et associative de notre belle cité girondine.'},
-  {name:'Boucherie Chez Val & Maë',type:'Artisan boucher',url:'https://boucherie-chez-val-et-mae-33.fr/',logo:'val&mae.png',desc:'Boucherie-charcuterie-traiteur au cœur de Bazas. Viandes Label Rouge, IGP Bœuf de Bazas, charcuteries maison… une adresse incontournable !'},
-  {name:"Central'liss",type:'Blanchisserie pro',url:'https://blanchisserie-central-liss.fr/',logo:"central'liss.png",desc:"Blanchisserie professionnelle basée à Lignan-de-Bazas. Spécialisée dans l'hôtellerie, les collectivités et les professionnels — linge impeccable garanti."},
-  {name:'V and B Langon',type:'Cave & bière',url:'https://www.vandb.fr/',logo:'logo_V_and_B.png',desc:'Cave à bières et vins à Langon. Plus de 400 références de bières artisanales et une sélection de vins soigneusement choisie pour tous les amateurs.'},
-  {name:'Carrosserie Pitaud',type:'Carrosserie',url:'https://carrosserie-pitaud.fr/',logo:'lofocfp.png',desc:"Votre carrosserie de confiance dans le Bazadais. Réparation, remise en état, peinture — pour que votre véhicule retrouve sa splendeur d'avant."},
-  {name:'SO FRUIT Primeur',type:'Primeur',url:'https://www.facebook.com/p/SO-FRUIT-Primeur-100063498852369/',logo:null,desc:"Primeur local proposant chaque jour fruits et légumes frais de saison. Bien manger, c'est aussi la clé de la performance sportive !"},
-  {name:'Sport 2000 Langon',type:'Équipementier sportif',url:'https://www.sport2000.fr/magasins/fiche/331020-sport-2000-langon',logo:'sport2000.png',desc:"Magasin de sport à Langon avec tout l'équipement dont vous avez besoin — chaussures, maillots, ballon. Le partenaire sportif naturel du HBC Bazadais."},
-  {name:'Créamext',type:'Clôture & Paysage',url:'https://creamext.com/',logo:'logo2-blanc.png',desc:'Paysagiste et clôturiste basé à Bazas. Aménagement extérieur, entretien, portails et automatismes — plus de 20 ans d\'expertise dans toute la Gironde.'},
-  {name:'MRP Habitat',type:'Menuisier',url:'https://www.maximeratamrphabitat.fr/',logo:'mrp.png',desc:'Menuisier-charpentier dans le Bazadais. Fenêtres, portes, terrasses, ossature bois — des réalisations sur mesure avec le savoir-faire de l\'artisanat local.'},
-  {name:"Caisse d'Épargne Bazas",type:'Banque',url:'https://www.agences.caisse-epargne.fr/banque-assurance/bazas-id13335033051',logo:'national.png',desc:"L'agence Caisse d'Épargne de Bazas accompagne particuliers et associations dans leurs projets. Un partenaire financier de proximité pour le club."},
-  {name:'OBJ Coaching',type:'Coach sportif',url:'https://www.objtrainer.fr/',logo:'645c9db43596a_OBJLogo.png',desc:'Johan Brière, personal trainer à Langon. Coaching personnalisé — perte de poids, renforcement, préparation physique. Plus de 200 personnes transformées !'},
-  {name:'La Ferme du Petit Cassé',type:'Canards & foie gras',url:'https://fermedupetitcasse.com/',logo:'logo_casse_blanc.png',desc:'Charlie Bertin élève ses canards gras à Cazats depuis 2010. Foie gras, rillettes, conserves maison — vente en direct à la ferme, sans intermédiaire.'},
-  {name:'Lucas Denis',type:'Ramoneur & chauffagiste',url:'https://www.lucas-denis.fr/',logo:'lucas.png',desc:'Entreprise familiale depuis 1992 dans le sud Gironde. Ramonage, installation de poêles et chauffages à bois — 30 ans d\'expérience et une réputation solide.'},
-  {name:'OuiGlass Bazas',type:'Vitrage',url:'https://ouiglass.com/tous-centres/bazas',logo:'logo-ouiglass.png',desc:'Centre OuiGlass de Bazas : réparation et remplacement de vitrages auto et habitation. Intervention rapide, devis gratuit, prise en charge assurance.'},
-  {name:'Carré Double',type:'Aménagement & décoration',url:'https://carredouble.fr/',logo:'CD-blanc.png',desc:'Studio d\'aménagement et décoration intérieure. Des espaces pensés sur mesure pour vous ressembler — du conseil à la réalisation clé en main.'},
-  {name:'Pest & Termites Bazas',type:'Traitement nuisibles',url:'https://www.pestandtermites.fr/',logo:'pest.png',desc:'Spécialiste du traitement des nuisibles et des termites en Gironde. Protection durable de votre habitat contre toutes les infestations.'},
-  {name:'Intermarché Bazas',type:'Grande distribution',url:'https://www.intermarche.com/magasins/06743/bazas-33430/infos-pratiques',logo:'intermarche.png',desc:'Le supermarché Intermarché de Bazas : courses du quotidien, produits locaux et promotions. Merci à eux de soutenir le handball local depuis plusieurs saisons !'},
-  {name:'Viva La Vie Techni Coif',type:'Coiffeur',url:'https://www.planity.com/viva-la-vie-techni-coif-bazas-33430',logo:'viva.png',desc:"Salon de coiffure à Bazas proposant coupes, colorations et soins pour toute la famille. Parce qu'on se sent toujours mieux sur le terrain quand on est bien coiffé !"},
-  {name:'Le Cercle Aillas',type:'Bar & Brasserie',url:'https://lecercle-restaurant-aillas.fr/',logo:'LOGO-CERCLE-PNG.png',desc:'Bar-brasserie convivial à Aillas. Cuisine maison à base de produits frais, menu du jour, apéros et planches le soir. LE rendez-vous d\'après-match !'},
-];
+const PARTNERS = [];
 
 // ── NAV ──
 const PAGES = ['home','news','teams','horaires','shop','partners','contact'];
@@ -1159,8 +1137,6 @@ function buildCarousel() {
 
 // ── INIT ──
 buildTeams();
-buildPartners();
-buildCarousel();
 buildSchedule();
 initReveal();
 </script>
