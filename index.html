@@ -261,7 +261,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 .fcar-inner{display:flex;gap:1rem;will-change:transform}
 .fcar-item{background:transparent;border:none;border-radius:0;padding:.5rem .9rem;display:flex;flex-direction:column;align-items:center;gap:.55rem;text-decoration:none;white-space:nowrap;transition:opacity var(--t);flex-shrink:0;min-width:110px;text-align:center}
 .fcar-item:hover{border-color:rgba(234,59,121,.3);background:rgba(234,59,121,.05)}
-.fcar-logo{width:60px;height:44px;border-radius:7px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:transparent}
+.fcar-logo{width:90px;height:64px;border-radius:7px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:transparent}
 .fcar-logo img{max-width:100%;max-height:100%;object-fit:contain}
 .fcar-logo-txt{font-family:'Bebas Neue',sans-serif;font-size:.85rem;color:var(--rose)}
 .fcar-name{font-size:.68rem;font-weight:600;color:rgba(255,252,237,.6);letter-spacing:.04em;text-transform:uppercase;line-height:1.2;max-width:100px;white-space:normal;text-align:center}
@@ -656,6 +656,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 
 <!-- ══ FOOTER ══ -->
 <footer>
+  <div style="text-align:center;padding:2rem 0 .8rem;border-top:1px solid rgba(234,59,121,.15)">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.2em;color:rgba(234,59,121,.7);text-transform:uppercase">Nos Partenaires</p>
+  </div>
   <div class="fcar-wrap">
     <div class="fcar-inner" id="fcarInner"></div>
   </div>
@@ -1130,6 +1133,9 @@ function buildPartners() {
       ? `<div class="partcard-logo"><img src="${GH_PARTNERS}${p.logo}" alt="${p.name}" onerror="this.parentElement.className='partcard-logo-placeholder';this.parentElement.textContent='${p.name.charAt(0)}'"></div>`
       : `<div class="partcard-logo-placeholder">${p.name.charAt(0)}</div>`;
     const descHTML = p.desc ? `<div class="partcard-desc">${p.desc}</div>` : '';
+    if (p.url === '#') {
+      return `<div class="partcard rv">${logoHTML}<div class="partcard-name">${p.name}</div><div class="partcard-type">${p.type}</div>${descHTML}</div>`;
+    }
     return `<a class="partcard rv" href="${p.url}" target="_blank" rel="noopener">${logoHTML}<div class="partcard-name">${p.name}</div><div class="partcard-type">${p.type}</div>${descHTML}</a>`;
   }).join('');
 }
@@ -1141,6 +1147,9 @@ function buildCarousel() {
     const logoHTML = p.logo
       ? `<div class="fcar-logo"><img src="${GH_PARTNERS}${p.logo}" alt="${p.name}" onerror="this.parentElement.innerHTML='<span class=fcar-logo-txt>${p.name.charAt(0)}</span>'"></div>`
       : `<div class="fcar-logo"><span class="fcar-logo-txt">${p.name.charAt(0)}</span></div>`;
+    if (p.url === '#') {
+      return `<div class="fcar-item">${logoHTML}<div class="fcar-name">${p.name}</div></div>`;
+    }
     return `<a class="fcar-item" href="${p.url}" target="_blank" rel="noopener">${logoHTML}<div class="fcar-name">${p.name}</div></a>`;
   };
   inner.innerHTML = PARTNERS.map(itemHTML).join('') + PARTNERS.map(itemHTML).join('');
