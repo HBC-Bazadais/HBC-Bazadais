@@ -261,7 +261,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 .fcar-inner{display:flex;gap:1rem;will-change:transform}
 .fcar-item{background:transparent;border:none;border-radius:0;padding:.5rem .9rem;display:flex;flex-direction:column;align-items:center;gap:.55rem;text-decoration:none;white-space:nowrap;transition:opacity var(--t);flex-shrink:0;min-width:110px;text-align:center}
 .fcar-item:hover{border-color:rgba(234,59,121,.3);background:rgba(234,59,121,.05)}
-.fcar-logo{width:60px;height:44px;border-radius:7px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,.7)}
+.fcar-logo{width:60px;height:44px;border-radius:7px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:transparent}
 .fcar-logo img{max-width:100%;max-height:100%;object-fit:contain}
 .fcar-logo-txt{font-family:'Bebas Neue',sans-serif;font-size:.85rem;color:var(--rose)}
 .fcar-name{font-size:.68rem;font-weight:600;color:rgba(255,252,237,.6);letter-spacing:.04em;text-transform:uppercase;line-height:1.2;max-width:100px;white-space:normal;text-align:center}
@@ -655,6 +655,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 
 <!-- ══ FOOTER ══ -->
 <footer>
+  <div class="fcar-wrap">
+    <div class="fcar-inner" id="fcarInner"></div>
+  </div>
   <div class="footer-main">
     <div class="footer-brand">
       <a class="flogo" href="#" onclick="goNav('home')">
@@ -685,7 +688,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 </footer>
 
 <script>
-const GH = 'https://raw.githubusercontent.com/albanbontemps33-cell/hbcbazadais/main/';
+const GH_PARTNERS = GH;
 
 const TEAMS = [
   {id:'loisir',cat:'Détente & Loisir',name:'Loisir',sheet:'loisir',roster:[]},
@@ -772,7 +775,30 @@ const TEAMS = [
   ]},
 ];
 
-const PARTNERS = [];
+const GH_PARTNERS = 'https://raw.githubusercontent.com/albanbontemps33-cell/hbcbazadais-partners/main/';
+
+const PARTNERS = [
+  {name:'Loïc Renac Élagage',logo:'loic.png',type:'Partenaire',url:'https://renac-elagage-abattage-33.fr/',desc:'Arboriste-grimpeur expert en élagage, abattage et débroussaillage en Gironde.'},
+  {name:'GL Utilitaire',logo:'gl.png',type:'Partenaire',url:'#',desc:'Location et vente de véhicules utilitaires à Bernos-Beaulac.'},
+  {name:'Maison Clément',logo:'maison.png',type:'Partenaire',url:'#',desc:'Boucherie-charcuterie artisanale, produits frais et savoir-faire local.'},
+  {name:'Le Cercle',logo:'cercle.png',type:'Partenaire',url:'#',desc:'Bar brasserie convivial, le rendez-vous des amateurs de bonne ambiance.'},
+  {name:'Viva la Vie',logo:'viva.png',type:'Partenaire',url:'https://www.facebook.com/technicoifvlv/',desc:'Salon de coiffure tendance, à votre service pour une beauté au quotidien.'},
+  {name:'MRP Habitat',logo:'mrp.png',type:'Partenaire',url:'https://www.maximeratamrphabitat.fr/',desc:'Menuisier-charpentier à Langon, spécialiste de la construction bois et rénovation de toiture.'},
+  {name:'So Fruit Primeur',logo:'sofruit.png',type:'Partenaire',url:'https://www.facebook.com/people/SO-FRUIT-Primeur/100063498852369/',desc:'Primeur local, fruits et légumes frais sélectionnés avec soin.'},
+  {name:'Caisse d\'Épargne Bazas',logo:'caisse.png',type:'Partenaire',url:'https://www.agences.caisse-epargne.fr/banque-assurance/bazas-id13335033051',desc:'Votre banque de proximité à Bazas, au service des particuliers et professionnels.'},
+  {name:'Boucherie Chez Val et Maë',logo:'valetmae.png',type:'Partenaire',url:'https://boucherie-chez-val-et-mae-33.fr/',desc:'Boucher-charcutier-traiteur à Bazas, produits artisanaux et recettes traditionnelles.'},
+  {name:'GlassAuto Bazas',logo:'glass.png',type:'Partenaire',url:'https://www.glassauto.fr/centre/glassauto-bazas-nord',desc:'Spécialiste de la réparation et du remplacement de pare-brise à Bazas.'},
+  {name:'Ville de Bazas',logo:'ville.png',type:'Institutionnel',url:'https://www.ville-bazas.fr/',desc:'La mairie de Bazas, fière de soutenir la vie associative et sportive locale.'},
+  {name:'Lucas Denis',logo:'lucas.png',type:'Partenaire',url:'https://www.lucas-denis.fr/',desc:'Entreprise familiale agréée RGE Qualibois, ramoneur et installateur de poêles à Bazas.'},
+  {name:'V and B Langon',logo:'vandb.png',type:'Partenaire',url:'https://www.vandb.fr/nos-magasins/v-and-b-langon',desc:'Cave à bières et vins à Langon, pour les amateurs de bonnes bouteilles.'},
+  {name:'OBJ Trainer',logo:'obj.png',type:'Partenaire',url:'https://www.objtrainer.fr/coach-sportif-langon',desc:'Coach sportif à Langon, pour optimiser ta santé et atteindre tes objectifs depuis 2017.'},
+  {name:'Carré Double',logo:'carre.png',type:'Partenaire',url:'https://carredouble.fr/',desc:'Spécialiste de l\'agencement intérieur sur mesure à Bazas.'},
+  {name:'Gironde — Le Département',logo:'gironde.png',type:'Institutionnel',url:'https://www.gironde.fr/',desc:'Le Département de la Gironde, partenaire du sport et de la vie associative en Nouvelle-Aquitaine.'},
+  {name:'Créamext',logo:'creamext.png',type:'Partenaire',url:'https://creamext.com/',desc:'Artisan paysagiste et installateur de clôtures en Gironde depuis plus de 10 ans.'},
+  {name:'Carrosserie F. Pitaud',logo:'cfp.png',type:'Partenaire',url:'https://carrosserie-pitaud.fr/',desc:'Garagiste indépendant à Bazas, réparation carrosserie toutes marques et service carte grise.'},
+  {name:'Pest and Termites',logo:'pest.png',type:'Partenaire',url:'https://www.pestandtermites.fr/',desc:'Solutions de dératisation, désinsectisation et traitement du bois dans le sud Gironde.'},
+  {name:'Intermarché Bazas',logo:'intermarche.png',type:'Partenaire',url:'https://www.intermarche.com/magasins/06743/bazas-33430/infos-pratiques',desc:'Votre supermarché de proximité à Bazas, engagé aux côtés du club local.'},
+];
 
 // ── NAV ──
 const PAGES = ['home','news','teams','horaires','shop','partners','contact'];
@@ -1101,7 +1127,7 @@ function filterPos(el, pos) {
 function buildPartners() {
   document.getElementById('partGrid').innerHTML = PARTNERS.map(p => {
     const logoHTML = p.logo
-      ? `<div class="partcard-logo"><img src="${GH}${p.logo}" alt="${p.name}" onerror="this.parentElement.className='partcard-logo-placeholder';this.parentElement.textContent='${p.name.charAt(0)}'"></div>`
+      ? `<div class="partcard-logo"><img src="${GH_PARTNERS}${p.logo}" alt="${p.name}" onerror="this.parentElement.className='partcard-logo-placeholder';this.parentElement.textContent='${p.name.charAt(0)}'"></div>`
       : `<div class="partcard-logo-placeholder">${p.name.charAt(0)}</div>`;
     const descHTML = p.desc ? `<div class="partcard-desc">${p.desc}</div>` : '';
     return `<a class="partcard rv" href="${p.url}" target="_blank" rel="noopener">${logoHTML}<div class="partcard-name">${p.name}</div><div class="partcard-type">${p.type}</div>${descHTML}</a>`;
@@ -1113,7 +1139,7 @@ function buildCarousel() {
   const inner = document.getElementById('fcarInner');
   const itemHTML = p => {
     const logoHTML = p.logo
-      ? `<div class="fcar-logo"><img src="${GH}${p.logo}" alt="${p.name}" onerror="this.parentElement.innerHTML='<span class=fcar-logo-txt>${p.name.charAt(0)}</span>'"></div>`
+      ? `<div class="fcar-logo"><img src="${GH_PARTNERS}${p.logo}" alt="${p.name}" onerror="this.parentElement.innerHTML='<span class=fcar-logo-txt>${p.name.charAt(0)}</span>'"></div>`
       : `<div class="fcar-logo"><span class="fcar-logo-txt">${p.name.charAt(0)}</span></div>`;
     return `<a class="fcar-item" href="${p.url}" target="_blank" rel="noopener">${logoHTML}<div class="fcar-name">${p.name}</div></a>`;
   };
@@ -1138,6 +1164,8 @@ function buildCarousel() {
 // ── INIT ──
 buildTeams();
 buildSchedule();
+buildPartners();
+buildCarousel();
 initReveal();
 </script>
 </body>
