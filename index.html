@@ -54,11 +54,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);o
 #nav.solid{box-shadow:0 4px 26px rgba(15,30,65,.28)}
 .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.12em;text-decoration:none;color:#FFFCED;display:flex;align-items:center;gap:.6rem}.nav-logo-center{justify-content:center}
 .nav-logo em{color:var(--rose);font-style:normal}
-.nav-logo img{height:110px;width:110px;object-fit:cover;border-radius:50%;box-shadow:0 4px 24px rgba(0,0,0,.35);border:2px solid rgba(255,252,237,.25)}
+.nav-logo img{height:130px;width:130px;object-fit:contain}
 .nav-links{display:flex;align-items:center;gap:2rem;list-style:none}.nav-left{justify-content:flex-end}.nav-right{justify-content:flex-start}
-.nav-links>li>a{color:rgba(255,252,237,.65);font-size:.95rem;font-weight:700 !important;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:color var(--t);position:relative;padding-bottom:2px}
+.nav-links>li>a{color:#FFFCED;font-size:.95rem;font-weight:700 !important;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:color var(--t);position:relative;padding-bottom:2px}
 .nav-links>li>a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--rose);transition:width var(--t)}
-.nav-links>li>a:hover{color:#FFFCED}
+.nav-links>li>a:hover{color:var(--rose)}
 .nav-links>li>a:hover::after{width:100%}
 .nav-cta{background:var(--rose);color:#fff!important;padding:.5rem 1.2rem!important;border-radius:var(--radius);font-weight:600!important}
 .nav-cta::after{display:none!important}
@@ -86,7 +86,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);o
 
 /* ── HERO (motif carrés en pur CSS/SVG, plus d'image) ── */
 #hero{position:relative;overflow:hidden;padding:calc(110px + 3.5rem) 5% 4rem;background:var(--brand-blue);display:flex;align-items:center;justify-content:center;min-height:clamp(440px,52vw,640px)}
-.hero-pixel-rail{position:absolute;top:0;bottom:0;width:clamp(120px,24vw,340px);background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22240%22%20height%3D%22160%22%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%230F1E41%22/%3E%0A%3Crect%20x%3D%2240%22%20y%3D%220%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23ffffff%22/%3E%0A%3Crect%20x%3D%22120%22%20y%3D%220%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23EA3B79%22/%3E%0A%3Crect%20x%3D%2240%22%20y%3D%2240%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23EA3B79%22/%3E%0A%3Crect%20x%3D%2280%22%20y%3D%2240%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23ffffff%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%2280%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23ffffff%22/%3E%0A%3Crect%20x%3D%2280%22%20y%3D%2280%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%230F1E41%22/%3E%0A%3Crect%20x%3D%22160%22%20y%3D%2280%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23EA3B79%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%22120%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23EA3B79%22/%3E%0A%3Crect%20x%3D%2240%22%20y%3D%22120%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%230F1E41%22/%3E%0A%3Crect%20x%3D%22120%22%20y%3D%22120%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23ffffff%22/%3E%0A%3C/svg%3E");background-repeat:repeat;background-size:min(200px,17vw) auto;pointer-events:none}
+.hero-pixel-rail{position:absolute;top:0;bottom:0;width:clamp(120px,24vw,340px);background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22240%22%20height%3D%22160%22%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%230F1E41%22/%3E%0A%3Crect%20x%3D%2240%22%20y%3D%220%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23ffffff%22/%3E%0A%3Crect%20x%3D%22120%22%20y%3D%220%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23EA3B79%22/%3E%0A%3Crect%20x%3D%2240%22%20y%3D%2240%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23EA3B79%22/%3E%0A%3Crect%20x%3D%2280%22%20y%3D%2240%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23ffffff%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%2280%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23ffffff%22/%3E%0A%3Crect%20x%3D%2280%22%20y%3D%2280%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%230F1E41%22/%3E%0A%3Crect%20x%3D%22160%22%20y%3D%2280%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23EA3B79%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%22120%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23EA3B79%22/%3E%0A%3Crect%20x%3D%2240%22%20y%3D%22120%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%230F1E41%22/%3E%0A%3Crect%20x%3D%22120%22%20y%3D%22120%22%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23ffffff%22/%3E%0A%3C/svg%3E");background-repeat:repeat-y;background-position:top center;background-size:min(340px,28vw) auto;pointer-events:none}
 .hero-pixel-rail.left{left:0}
 .hero-pixel-rail.right{right:0;transform:scaleX(-1)}
 .hero-pixel-content{position:relative;z-index:2;max-width:640px;text-align:center}
@@ -100,6 +100,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);o
 .hero-pixel-content .hero-actions{justify-content:center}
 .hero-pixel-content .btn-o{border-color:rgba(255,255,255,.55);color:#fff}
 .hero-pixel-content .btn-o:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.1)}
+.hero-socials{display:flex;gap:.9rem;margin-top:1.6rem;justify-content:center}
+.hero-socials .soc{border-color:rgba(255,255,255,.3);width:64px;height:64px}
+.hero-socials .soc svg{fill:rgba(255,255,255,.85);width:32px;height:32px}
+.hero-socials .soc:hover{border-color:var(--rose);background:rgba(255,255,255,.1)}
+.hero-socials .soc:hover svg{fill:#fff}
 #hero-info{position:relative;overflow:hidden;padding:3rem 5%;background:var(--blue-pale)}
 .hero-grad{position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 75% 50%,rgba(234,59,121,.07) 0%,transparent 65%)}
 .hero-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(15,30,65,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(15,30,65,.035) 1px,transparent 1px);background-size:80px 80px}
@@ -120,6 +125,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);o
 .num-item .n{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--ink);line-height:1}
 .num-item .n b{color:var(--rose)}
 .num-item .l{font-size:.68rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(22,35,63,.45);margin-top:.25rem}
+.hero-nums-dark{justify-content:center;gap:3.6rem;margin-top:2.2rem}
+.hero-nums-dark .num-item .n{font-size:3.4rem;color:#fff}
+.hero-nums-dark .num-item .n b{color:var(--rose)}
+.hero-nums-dark .num-item .l{color:rgba(255,255,255,.75);font-size:.74rem}
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 .btn-p{display:inline-flex;align-items:center;gap:.6rem;background:var(--rose);color:#fff;padding:.85rem 2rem;border-radius:var(--radius);font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:all var(--t)}
 .btn-p:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(234,59,121,.35)}
@@ -138,6 +147,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);o
 .history-body{font-size:.94rem;color:rgba(22,35,63,.72);line-height:1.85;font-weight:300}
 .history-body strong{color:var(--rose);font-weight:700}
 .about-extra{max-width:600px}
+.feat-grid{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:1.3rem;margin-bottom:2.2rem}
+.feat-grid li{background:var(--card);border:1px solid var(--border-navy);border-radius:0;overflow:hidden;box-shadow:var(--shadow-sm);width:calc((100% - 2.6rem)/3);max-width:320px}
+.feat-grid img{width:100%;height:auto;display:block}
+@media (max-width:820px){.feat-grid li{width:calc((100% - 1.3rem)/2)}}
+@media (max-width:520px){.feat-grid li{width:100%}}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
 .sec-label{font-size:.72rem;font-weight:600;letter-spacing:.2em;color:var(--rose);text-transform:uppercase;margin-bottom:1rem}
 .sec-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,5vw,4.5rem);line-height:1;color:var(--ink);margin-bottom:1.5rem}
@@ -420,10 +434,13 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   .hbg{display:flex}
   .hero-ring,.hero-ring2,.hero-orb{display:none}
   .hero-nums{gap:1.5rem}
+  .hero-nums-dark{gap:1.6rem;margin-top:1.6rem}
+  .hero-nums-dark .num-item .n{font-size:2.2rem}
+  .hero-nums-dark .num-item .l{font-size:.6rem}
   #hero{min-height:clamp(380px,90vw,520px);padding:calc(72px + 2.5rem) 6% 3rem}
   .hero-pixel-rail{width:clamp(40px,13vw,70px)}
-  .hero-pixel-rail{background-size:min(90px,20vw) auto}
-  .hero-pixel-content{padding:0 4.6rem}
+  .hero-pixel-rail{background-size:min(160px,32vw) auto}
+  .hero-pixel-content{padding:0 2.6rem}
   .hero-pixel-content .hero-eyebrow{margin-bottom:.9rem}
   .hero-pixel-content .hero-eyebrow p{font-size:.6rem}
   .hero-pixel-content .hero-sub{font-size:.76rem;line-height:1.45;margin-bottom:1rem}
@@ -448,12 +465,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   .nav-logo span{display:none}
   .nav-logo em{display:none}
   .nav-logo img{
-    height:62px !important;
-    width:62px !important;
-    border-radius:50% !important;
-    object-fit:cover !important;
-    border:2px solid rgba(255,252,237,.25) !important;
-    box-shadow:0 2px 12px rgba(0,0,0,.35) !important;
+    height:70px !important;
+    width:70px !important;
+    object-fit:contain !important;
   }
   .hbg{
     width:36px;
@@ -538,12 +552,14 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   #nav{grid-template-columns:auto 1fr auto}
   .nav-left,.nav-right{display:none}
   .nav-logo-center{justify-content:center;font-size:1.3rem}
-  .nav-logo-center img{height:75px;width:75px}
+  .nav-logo-center img{height:90px;width:90px}
 }
 
 </style>
 </head>
 <body>
+
+<div class="pixel-divider" aria-hidden="true"></div>
 
 <!-- NAV -->
 <nav id="nav">
@@ -581,6 +597,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
     <div class="hero-pixel-rail left" aria-hidden="true"></div>
     <div class="hero-pixel-rail right" aria-hidden="true"></div>
     <div class="hero-pixel-content">
+      <br><br>
       <h1 class="hero-word"><span class="hw-small">HBC</span><span class="hw-big">Bazadais</span></h1>
       <div class="hero-eyebrow"><span></span><p>Saison 2025 — 2026</p></div>
       <p class="hero-sub">Club convivial et dynamique à Bazas depuis 1993. 12 équipes, tous âges, tous niveaux — venez vivre le handball en famille.</p>
@@ -588,22 +605,24 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         <a href="javascript:void(0)" class="btn-p" onclick="goNav('teams')">Nos équipes →</a>
         <a href="javascript:void(0)" class="btn-o" onclick="goNav('contact')">Nous rejoindre</a>
       </div>
-    </div>
-  </section>
-
-  <section id="hero-info">
-    <div class="hero-grad"></div>
-    <div class="hero-lines"></div>
-    <div class="hero-orb"></div>
-    <div class="hero-ring"></div>
-    <div class="hero-ring2"></div>
-    <div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-nums">
-          <div class="num-item"><div class="n">12<b>+</b></div><div class="l">Équipes</div></div>
-          <div class="num-item"><div class="n">200<b>+</b></div><div class="l">Licenciés</div></div>
-          <div class="num-item"><div class="n">33<b>ans</b></div><div class="l">D'histoire</div></div>
-        </div>
+      <div class="hero-socials">
+        <!-- Facebook -->
+        <a class="soc" href="https://www.facebook.com/hbc.bazadais" target="_blank" title="Facebook">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a class="soc" href="https://www.instagram.com/hbcbazadais_/" target="_blank" title="Instagram">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <!-- TikTok -->
+        <a class="soc" href="https://www.tiktok.com/@bazas.handball" target="_blank" title="TikTok">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+      </div>
+      <div class="hero-nums hero-nums-dark">
+        <div class="num-item"><div class="n">12<b>+</b></div><div class="l">Équipes</div></div>
+        <div class="num-item"><div class="n">200<b>+</b></div><div class="l">Licenciés</div></div>
+        <div class="num-item"><div class="n">33<b>ans</b></div><div class="l">D'histoire</div></div>
       </div>
     </div>
   </section>
@@ -623,56 +642,20 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
     </div>
 
     <div class="container">
-      <div class="about-extra rv">
-        <ul class="feats">
-          <li>12 équipes de l'école de hand aux seniors compétitifs</li>
-          <li>Encadrement qualifié et bienveillant pour chaque catégorie</li>
-          <li>Affiliation FFHB — Comité Gironde de Handball</li>
-          <li>Événements et vie associative tout au long de la saison</li>
-          <li>Section loisirs ouverte à tous, sans compétition</li>
+      <div class="about-extra rv" style="max-width:900px;margin:0 auto;text-align:center">
+        <ul class="feat-grid">
+          <li><img src="https://raw.githubusercontent.com/albanbontemps33-cell/hbcbazadais/main/feat-equipes.png" alt="12 équipes de l'école de hand aux seniors compétitifs"></li>
+          <li><img src="https://raw.githubusercontent.com/albanbontemps33-cell/hbcbazadais/main/feat-encadrement.png" alt="Encadrement qualifié et bienveillant pour chaque catégorie"></li>
+          <li><img src="https://raw.githubusercontent.com/albanbontemps33-cell/hbcbazadais/main/feat-affiliation.png" alt="Affiliation FFHB — Comité Gironde de Handball"></li>
+          <li><img src="https://raw.githubusercontent.com/albanbontemps33-cell/hbcbazadais/main/feat-evenements.png" alt="Événements et vie associative tout au long de la saison"></li>
+          <li><img src="https://raw.githubusercontent.com/albanbontemps33-cell/hbcbazadais/main/feat-loisirs.png" alt="Section loisirs ouverte à tous, sans compétition"></li>
         </ul>
-        <a href="javascript:void(0)" class="btn-p" style="margin-top:2rem;display:inline-flex" onclick="goNav('contact')">Rejoindre le club →</a>
+        <a href="javascript:void(0)" class="btn-p" style="margin-top:.5rem;display:inline-flex" onclick="goNav('contact')">Rejoindre le club →</a>
       </div>
     </div>
   </section>
 
-  <section id="map-sec">
-    <div class="container">
-      <div class="rv">
-        <div class="sec-label">Nous trouver</div>
-        <h2 class="sec-h2">Gymnases &amp; Horaires</h2>
-        <p style="font-size:.88rem;color:rgba(22,35,63,.5);margin-bottom:2.5rem;font-weight:300">Av. du Prof Paul Lamarque, 33430 Bazas · Gymnase Collège Ausone &amp; Gymnase Sainte-Cluque</p>
-      </div>
-      <div class="maps-grid rv">
-        <div class="map-frame-item">
-          <p class="map-label">Gymnase Sainte-Cluque</p>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.0917081547245!2d-0.2243431226227602!3d44.43128100175925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd55777428a58faf%3A0xbb5f61fabac1c2ea!2sHbc%20bazadais!5e0!3m2!1sfr!2sfr!4v1779857208750!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <div class="map-frame-item">
-          <p class="map-label">Collège Ausone</p>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d712.3072861224124!2d-0.22130517158510668!3d44.428461639606425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd55767ac9d10b41%3A0xc5846b2e10114fc3!2sColl%C3%A8ge%20Ausone!5e0!3m2!1sfr!2sfr!4v1781038006402!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-      <div class="rv">
-        <table class="htable">
-          <thead><tr><th>Équipe</th><th>Jour(s)</th><th>Horaires</th><th>Lieu</th></tr></thead>
-          <tbody>
-            <tr><td class="tc">École du Hand</td><td>Samedi</td><td>10h00 – 11h00</td><td><span class="tlieu">Collège Ausone</span></td></tr>
-            <tr><td class="tc">Loisir</td><td>Jeudi</td><td>20h00 – 21h30</td><td><span class="tlieu">Collège Ausone</span></td></tr>
-            <tr><td class="tc">-11 Mixte</td><td>Mercredi</td><td>17h00 – 18h30</td><td><span class="tlieu">Collège Ausone</span></td></tr>
-            <tr><td class="tc">-13 Filles</td><td>Mercredi</td><td>18h30 – 20h00</td><td><span class="tlieu">Collège Ausone</span></td></tr>
-            <tr><td class="tc">-13 Garçons</td><td>Jeudi</td><td>18h30 – 20h00</td><td><span class="tlieu">Collège Ausone</span></td></tr>
-            <tr><td class="tc">-15 Filles</td><td>Mardi</td><td>17h30 – 19h00</td><td><span class="tlieu">Collège Ausone</span></td></tr>
-            <tr><td class="tc">-15 Garçons</td><td>Mardi + Vendredi</td><td>17h30 – 19h00</td><td><span class="tlieu">Sainte-Cluque</span></td></tr>
-            <tr><td class="tc">-18 Filles</td><td>Vendredi</td><td>19h00 – 20h30</td><td><span class="tlieu">Sainte-Cluque</span></td></tr>
-            <tr><td class="tc">-18 Garçons</td><td>Mardi + Vendredi</td><td>17h30–19h30 / 17h30–19h00</td><td><span class="tlieu">Sainte-Cluque</span></td></tr>
-            <tr><td class="tc">Seniors Filles</td><td>Mardi + Vendredi</td><td>19h30–21h00 / 19h00–20h30</td><td><span class="tlieu">Ausone + S.Cluque</span></td></tr>
-            <tr><td class="tc">Seniors G1 &amp; G2</td><td>Mardi + Vendredi</td><td>19h30–21h00 / 20h30–22h00</td><td><span class="tlieu">Sainte-Cluque</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
+
 </div>
 
 <!-- ══ ACTUALITÉS ══ -->
@@ -725,8 +708,15 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
       <div style="display:flex;align-items:center;gap:.5rem"><div style="width:12px;height:12px;border-radius:3px;background:rgba(234,59,121,.25);border:1px solid rgba(234,59,121,.5)"></div><span style="font-size:.74rem;color:rgba(22,35,63,.55)">Collège Ausone</span></div>
       <div style="display:flex;align-items:center;gap:.5rem"><div style="width:12px;height:12px;border-radius:3px;background:rgba(74,158,255,.18);border:1px solid rgba(74,158,255,.4)"></div><span style="font-size:.74rem;color:rgba(22,35,63,.55)">Sainte-Cluque</span></div>
     </div>
-    <div class="map-frame rv" style="margin-top:3rem">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.0917081547245!2d-0.2243431226227602!3d44.43128100175925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd55777428a58faf%3A0xbb5f61fabac1c2ea!2sHbc%20bazadais!5e0!3m2!1sfr!2sfr!4v1779857208750!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="maps-grid rv" style="margin-top:3rem">
+      <div class="map-frame-item">
+        <p class="map-label">Gymnase Sainte-Cluque</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.0917081547245!2d-0.2243431226227602!3d44.43128100175925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd55777428a58faf%3A0xbb5f61fabac1c2ea!2sHbc%20bazadais!5e0!3m2!1sfr!2sfr!4v1779857208750!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="map-frame-item">
+        <p class="map-label">Collège Ausone</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d712.3072861224124!2d-0.22130517158510668!3d44.428461639606425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd55767ac9d10b41%3A0xc5846b2e10114fc3!2sColl%C3%A8ge%20Ausone!5e0!3m2!1sfr!2sfr!4v1781038006402!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </div>
 </div>
