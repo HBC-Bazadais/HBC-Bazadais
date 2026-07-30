@@ -567,6 +567,17 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 }
 
 </style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-704880QL4M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  // send_page_view désactivé : le site est une page unique avec routage par #hash,
+  // le suivi des "pages" (équipes, sous-pages, etc.) est envoyé manuellement via trackPageView()
+  gtag('config', 'G-704880QL4M', { send_page_view: false });
+</script>
 </head>
 <body>
 
@@ -1076,9 +1087,38 @@ function pushRoute(route) {
   } else {
     history.pushState(route, '', hash);
   }
+  trackPageView(route);
+}
+
+// ── SUIVI GOOGLE ANALYTICS PAR "PAGE" VIRTUELLE ──
+// Le site est une SPA (une seule page HTML), donc on envoie nous-mêmes un
+// événement page_view à chaque changement de route pour savoir, dans GA,
+// combien de temps les visiteurs passent sur chaque équipe / rubrique.
+function trackPageView(route) {
+  if (typeof gtag !== 'function') return;
+  const path = routeToHash(route).replace('#', '/');
+  let title = 'Accueil';
+
+  if (route.page === 'team' && route.teamId) {
+    const team = TEAMS.find(t => t.id === route.teamId);
+    title = team ? 'Équipe – ' + team.name : 'Équipe';
+  } else if (route.page === 'sub' && route.teamId) {
+    const team = TEAMS.find(t => t.id === route.teamId);
+    const subTitles = { effectif: 'Effectif', classement: 'Classement', calendrier: 'Calendrier & Résultats' };
+    title = (subTitles[route.sub] || route.sub) + (team ? ' – ' + team.name : '');
+  } else if (route.page && route.page !== 'home') {
+    title = route.page.charAt(0).toUpperCase() + route.page.slice(1);
+  }
+
+  gtag('event', 'page_view', {
+    page_title: title,
+    page_path: path,
+    page_location: location.origin + location.pathname + '#' + path.slice(1)
+  });
 }
 
 function applyRoute(route) {
+  trackPageView(route);
   if (route.page === 'team' && route.teamId) {
     renderTeam(route.teamId);
   } else if (route.page === 'sub' && route.teamId) {
