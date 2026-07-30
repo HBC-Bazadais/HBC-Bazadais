@@ -568,16 +568,27 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 
 </style>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-704880QL4M"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  // send_page_view désactivé : le site est une page unique avec routage par #hash,
-  // le suivi des "pages" (équipes, sous-pages, etc.) est envoyé manuellement via trackPageView()
-  gtag('config', 'G-704880QL4M', { send_page_view: false });
-</script>
+<!-- Google tag (gtag.js) : chargé uniquement après consentement, voir <script> cookie-consent en bas de page -->
+<style>
+/* ── COOKIE CONSENT — "carton jaune" ── */
+#cookieBanner{position:fixed;left:0;right:0;bottom:0;z-index:9999;display:flex;justify-content:center;padding:1.2rem;pointer-events:none}
+#cookieBanner.show{pointer-events:auto}
+.cookie-card{pointer-events:auto;max-width:560px;width:100%;background:var(--ink);color:#FFFCED;border-radius:var(--radius);box-shadow:var(--shadow-md);padding:1.5rem 1.6rem;display:flex;gap:1rem;align-items:flex-start;position:relative;overflow:hidden;transform:translateY(140%) rotate(-2deg);transition:transform .55s cubic-bezier(.2,.9,.25,1.2);border:1px solid rgba(234,59,121,.35)}
+.cookie-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--rose),transparent)}
+#cookieBanner.show .cookie-card{transform:translateY(0) rotate(0)}
+.cookie-emoji{font-size:2.4rem;line-height:1;flex-shrink:0;animation:cookieFall .7s cubic-bezier(.3,1.1,.4,1) .15s both}
+@keyframes cookieFall{0%{transform:translateY(-60px) rotate(0);opacity:0}70%{opacity:1}100%{transform:translateY(0) rotate(25deg);opacity:1}}
+.cookie-txt h4{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;font-size:1.35rem;color:#fff;margin-bottom:.35rem}
+.cookie-txt p{font-family:'DM Sans',sans-serif;font-size:.82rem;line-height:1.45;color:rgba(255,252,237,.75);margin-bottom:1rem}
+.cookie-txt p a{color:var(--rose);text-decoration:underline}
+.cookie-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.cookie-btns button{font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:.85rem;border-radius:var(--radius);padding:.55rem 1.1rem;cursor:pointer;border:1px solid transparent;transition:all var(--t)}
+#cookieAccept{background:var(--rose);color:#fff}
+#cookieAccept:hover{background:#d92c69}
+#cookieDecline{background:transparent;color:rgba(255,252,237,.75);border-color:rgba(255,252,237,.25)}
+#cookieDecline:hover{border-color:rgba(255,252,237,.6);color:#fff}
+@media(max-width:560px){.cookie-card{flex-direction:column;padding:1.3rem}}
+</style>
 </head>
 <body>
 
@@ -1561,6 +1572,63 @@ initReveal();
   const route = parseRoute(location.hash);
   history.replaceState(route, '', routeToHash(route));
   applyRoute(route);
+})();
+</script>
+
+<!-- ── COOKIE CONSENT ── -->
+<div id="cookieBanner">
+  <div class="cookie-card">
+    <div class="cookie-emoji">🍪</div>
+    <div class="cookie-txt">
+      <h4>Un cookie vient de tomber sur le terrain !</h4>
+      <p>On utilise juste Google Analytics pour savoir combien de supporters nous rendent visite. Vous acceptez qu'il reste sur le banc de touche ?</p>
+      <div class="cookie-btns">
+        <button id="cookieAccept">J'accepte</button>
+        <button id="cookieDecline">Je refuse</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── GESTION DU CONSENTEMENT COOKIES ──
+(function(){
+  const GA_ID = 'G-704880QL4M';
+  const banner = document.getElementById('cookieBanner');
+  const consent = localStorage.getItem('cookie_consent');
+
+  function loadGA() {
+    if (window.gaLoaded) return;
+    window.gaLoaded = true;
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    // send_page_view désactivé : SPA en #hash, le suivi des "pages" est envoyé
+    // manuellement via trackPageView()
+    gtag('config', GA_ID, { send_page_view: false });
+  }
+
+  if (consent === 'accepted') {
+    loadGA();
+  } else if (consent !== 'declined') {
+    // pas encore de choix : on affiche le bandeau
+    requestAnimationFrame(() => banner.classList.add('show'));
+  }
+
+  document.getElementById('cookieAccept').addEventListener('click', function(){
+    localStorage.setItem('cookie_consent', 'accepted');
+    banner.classList.remove('show');
+    loadGA();
+  });
+
+  document.getElementById('cookieDecline').addEventListener('click', function(){
+    localStorage.setItem('cookie_consent', 'declined');
+    banner.classList.remove('show');
+  });
 })();
 </script>
 </body>
