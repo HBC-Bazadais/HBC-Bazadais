@@ -144,8 +144,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);o
 .history-img-ph{aspect-ratio:4/3;border:1.5px dashed rgba(22,35,63,.22);border-radius:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;color:rgba(22,35,63,.35)}
 .history-img-ph svg{width:38px;height:38px}
 .history-img-ph span{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
-.history-img{aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
-.history-img img{width:100%;height:100%;object-fit:cover;display:block}
 .history-body{font-size:.94rem;color:rgba(22,35,63,.72);line-height:1.85;font-weight:300}
 .history-body strong{color:var(--rose);font-weight:700}
 .about-extra{max-width:600px}
@@ -441,7 +439,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 
 /* ── RESPONSIVE ── */
 @media(max-width:1024px){.about-grid{gap:3rem}}
-@media(max-width:900px){.about-grid,.contact-wrap,.footer-main{grid-template-columns:1fr}.sub-cards{grid-template-columns:1fr}.fg-row{grid-template-columns:1fr}.history-grid{grid-template-columns:1fr;gap:2rem}.history-img-ph,.history-img{aspect-ratio:16/9}}
+@media(max-width:900px){.about-grid,.contact-wrap,.footer-main{grid-template-columns:1fr}.sub-cards{grid-template-columns:1fr}.fg-row{grid-template-columns:1fr}.history-grid{grid-template-columns:1fr;gap:2rem}.history-img-ph{aspect-ratio:16/9}}
 @media(max-width:768px){
   .nav-links{display:none}
   .hbg{display:flex}
@@ -568,31 +566,62 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   .nav-logo-center img{height:90px;width:90px}
 }
 
-</style>
-
-<!-- Google tag (gtag.js) : chargé uniquement après consentement, voir <script> cookie-consent en bas de page -->
-<style>
-/* ── COOKIE CONSENT — "carton jaune" ── */
-#cookieBanner{position:fixed;left:0;right:0;bottom:0;z-index:9999;display:flex;justify-content:center;padding:1.2rem;pointer-events:none}
-#cookieBanner.show{pointer-events:auto}
-.cookie-card{pointer-events:auto;max-width:560px;width:100%;background:var(--ink);color:#FFFCED;border-radius:var(--radius);box-shadow:var(--shadow-md);padding:1.5rem 1.6rem;display:flex;gap:1rem;align-items:flex-start;position:relative;overflow:hidden;transform:translateY(140%) rotate(-2deg);transition:transform .55s cubic-bezier(.2,.9,.25,1.2);border:1px solid rgba(234,59,121,.35)}
-.cookie-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--rose),transparent)}
-#cookieBanner.show .cookie-card{transform:translateY(0) rotate(0)}
-.cookie-emoji{font-size:2.4rem;line-height:1;flex-shrink:0;animation:cookieFall .7s cubic-bezier(.3,1.1,.4,1) .15s both}
-@keyframes cookieFall{0%{transform:translateY(-60px) rotate(0);opacity:0}70%{opacity:1}100%{transform:translateY(0) rotate(25deg);opacity:1}}
-.cookie-txt h4{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;font-size:1.35rem;color:#fff;margin-bottom:.35rem}
-.cookie-txt p{font-family:'DM Sans',sans-serif;font-size:.82rem;line-height:1.45;color:rgba(255,252,237,.75);margin-bottom:1rem}
-.cookie-txt p a{color:var(--rose);text-decoration:underline}
-.cookie-btns{display:flex;gap:.6rem;flex-wrap:wrap}
-.cookie-btns button{font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:.85rem;border-radius:var(--radius);padding:.55rem 1.1rem;cursor:pointer;border:1px solid transparent;transition:all var(--t)}
-#cookieAccept{background:var(--rose);color:#fff}
-#cookieAccept:hover{background:#d92c69}
-#cookieDecline{background:transparent;color:rgba(255,252,237,.75);border-color:rgba(255,252,237,.25)}
-#cookieDecline:hover{border-color:rgba(255,252,237,.6);color:#fff}
-@media(max-width:560px){.cookie-card{flex-direction:column;padding:1.3rem}}
+/* ── POPUP TOURNOI ── */
+#tournoiOverlay{position:fixed;inset:0;z-index:500;background:rgba(15,30,65,.6);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:1.2rem;opacity:0;visibility:hidden;transition:opacity var(--t),visibility var(--t)}
+#tournoiOverlay.open{opacity:1;visibility:visible}
+.tournoi-modal{position:relative;background:var(--cream);border-radius:var(--radius);box-shadow:var(--shadow-md);max-width:460px;width:100%;overflow:hidden;transform:translateY(16px) scale(.97);transition:transform var(--t);border:1px solid var(--border)}
+#tournoiOverlay.open .tournoi-modal{transform:translateY(0) scale(1)}
+.tournoi-strip{height:6px;width:100%;background:var(--bleu)}
+.tournoi-close{position:absolute;top:.9rem;right:.9rem;width:32px;height:32px;border-radius:50%;background:rgba(15,30,65,.06);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--t);z-index:2}
+.tournoi-close:hover{background:rgba(234,59,121,.18)}
+.tournoi-close svg{width:15px;height:15px}
+.tournoi-close svg path{stroke:var(--ink)}
+.tournoi-body{padding:2rem 1.8rem 1.8rem}
+.tournoi-tag{display:inline-block;background:var(--rose);color:#fff;font-size:.62rem;font-weight:700;letter-spacing:.1em;padding:.28rem .65rem;text-transform:uppercase;margin-bottom:1rem}
+.tournoi-title{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;letter-spacing:.03em;color:var(--bleu);line-height:1;margin-bottom:.9rem}
+.tournoi-title em{color:var(--rose);font-style:normal}
+.tournoi-text{font-size:.92rem;line-height:1.55;color:var(--ink);opacity:.85;margin-bottom:.4rem}
+.tournoi-infos{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;margin:1.1rem 0 1.6rem;font-size:.82rem;font-weight:600;color:var(--bleu)}
+.tournoi-infos span{display:flex;align-items:center;gap:.4rem}
+.tournoi-actions{display:flex;flex-direction:column;gap:.7rem}
+.tournoi-btn-main{display:flex;align-items:center;justify-content:center;gap:.6rem;background:var(--rose);color:#fff;padding:.9rem 1.4rem;border-radius:var(--radius);font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;transition:all var(--t)}
+.tournoi-btn-main:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.tournoi-btn-sec{display:flex;align-items:center;justify-content:center;gap:.6rem;border:1px solid rgba(15,30,65,.2);color:var(--ink);padding:.85rem 1.4rem;border-radius:var(--radius);font-size:.78rem;font-weight:600;letter-spacing:.04em;text-decoration:none;transition:all var(--t)}
+.tournoi-btn-sec:hover{border-color:var(--rose);color:var(--rose);background:rgba(234,59,121,.06)}
+.tournoi-btn-main svg,.tournoi-btn-sec svg{width:18px;height:18px;flex-shrink:0}
+.tournoi-note{text-align:center;font-size:.78rem;color:var(--ink);opacity:.65;margin-top:.2rem}
+.tournoi-note b{color:var(--rose);font-weight:700}
+@media(max-width:480px){.tournoi-title{font-size:1.7rem}.tournoi-body{padding:1.7rem 1.3rem 1.4rem}}
 </style>
 </head>
 <body>
+
+<!-- POPUP TOURNOI -->
+<div id="tournoiOverlay" role="dialog" aria-modal="true" aria-labelledby="tournoiTitle">
+  <div class="tournoi-modal">
+    <div class="tournoi-strip" aria-hidden="true"></div>
+    <button class="tournoi-close" onclick="closeTournoiPopup()" aria-label="Fermer">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 5L19 19M19 5L5 19" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="tournoi-body">
+      <span class="tournoi-tag">Événement</span>
+      <h2 id="tournoiTitle" class="tournoi-title">Tournoi de <em>handball</em></h2>
+      <p class="tournoi-text">Tournoi de handball ouvert à tous, organisé par le HBC Bazadais. Venez nombreux, en famille ou entre amis !</p>
+      <div class="tournoi-infos">
+        <span>📅 Samedi 5 septembre</span>
+        <span>🕐 13h – 16h30</span>
+        <span>📍 Gymnase Sainte Cluque, Bazas</span>
+      </div>
+      <div class="tournoi-actions">
+        <a class="tournoi-btn-main" href="https://www.instagram.com/hbcbazadais_/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          Je m'inscris
+        </a>
+        <p class="tournoi-note">ou envoyez un message directement au compte <b>@hbcbazadais_</b> sur Instagram</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="pixel-divider" aria-hidden="true"></div>
 
@@ -667,9 +696,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
       <div class="container">
         <h2 class="history-h2">Histoire</h2>
         <div class="history-grid">
-        <div class="history-img">
-           <img src="https://raw.githubusercontent.com/albanbontemps33-cell/hbcbazadais/main/histoire.png" alt="Histoire du HBC Bazadais">
-            </div>
+          <div class="history-img-ph">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="20" height="16" rx="1.5" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="10" r="1.6" stroke="currentColor" stroke-width="1.4"/><path d="M3 17l5.5-5.5a1.5 1.5 0 0 1 2.1 0L15 16l1.8-1.8a1.5 1.5 0 0 1 2.1 0L21 16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Photo à venir</span>
+          </div>
           <p class="history-body">Le HBC Bazadais est un club de handball situé à Bazas, en Gironde, créé en 1993. Club convivial et dynamique, il accueille les joueurs et joueuses de tous âges et de tous niveaux à travers 12 catégories. Le HBC Bazadais met en avant les valeurs du sport collectif : respect, esprit d'équipe, convivialité et passion du handball. <strong>SOUY BAZADES !</strong></p>
         </div>
       </div>
@@ -697,12 +727,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   <div class="page-hero"><div class="page-hero-inner"><div class="ph-label">Le club en direct</div><h1 class="ph-h1">Actualités</h1></div></div>
   <div class="container" style="padding-top:3rem;padding-bottom:3rem">
     <div class="news-grid">
-      <div class="ncard" onclick="goNav('contact')" style="cursor:pointer"><div class="ncard-img" style="padding:0;overflow:hidden;background:#E9F1FA"><img src="https://raw.githubusercontent.com/albanbontemps33-cell/hbcbazadais/main/tournoi.png" alt="Vie du club" style="width:100%;height:100%;object-fit:cover;display:block"><div class="ncard-tag">Événement</div></div><div class="ncard-body"><div class="ncard-date">Saison 2026-27</div><h3>Vie du club</h3><p>Tournoi de handball ouvert à tous, le samedi 5 septembre de 13h à 16h30, au gymnase Sainte Cluque à Bazas.</p></div></div>
+      <div class="ncard"><div class="ncard-img" style="padding:0;overflow:hidden;background:#E9F1FA"><img src="https://raw.githubusercontent.com/albanbontemps33-cell/hbcbazadais/main/tournoi.png" alt="Vie du club" style="width:100%;height:100%;object-fit:cover;display:block"><div class="ncard-tag">Événement</div></div><div class="ncard-body"><div class="ncard-date">Saison 2026-27</div><h3>Vie du club</h3><p>Tournoi de handball ouvert à tous, le samedi 5 septembre de 13h à 16h30, au gymnase Sainte Cluque à Bazas.</p></div></div>
       <a href="https://cirqueabandonne.github.io/cirque-abandonne/" target="_blank" style="text-decoration:none;color:inherit;display:block"><div class="ncard"><div class="ncard-img" style="padding:0;overflow:hidden;background:#E9F1FA"><img src="https://raw.githubusercontent.com/albanbontemps33-cell/hbcbazadais/main/cirque.png" alt="Le Cirque Abandonné" style="width:100%;height:100%;object-fit:cover;display:block"><div class="ncard-tag">Événement</div></div><div class="ncard-body"><div class="ncard-date">Saison 2026-27</div><h3>Le Cirque Abandonné</h3><p>Revient en 2026 pour effrayer les plus petits et les plus grands ! Cliquez sur le cadre pour plus d'infos !</p></div></div></a>
       <div class="ncard" onclick="goNav('teams')" style="cursor:pointer"><div class="ncard-img" style="padding:0;overflow:hidden;background:#E9F1FA"><img src="https://raw.githubusercontent.com/albanbontemps33-cell/hbcbazadais/main/fin.jpg" alt="Suivez nos équipes" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"><div class="ncard-tag">Résultat</div></div><div class="ncard-body"><div class="ncard-date">Saison 2026-27</div><h3>Suivez nos équipes</h3><p>Retrouvez les résultats et actualités de toutes nos équipes tout au long de la saison.</p></div></div>
       <div class="ncard" onclick="goNav('teams')" style="cursor:pointer"><div class="ncard-img" style="padding:0;overflow:hidden;background:#E9F1FA"><img src="https://raw.githubusercontent.com/albanbontemps33-cell/hbcbazadais/main/amettre.png" alt="Résultats et calendrier" style="width:100%;height:100%;object-fit:cover;display:block"><div class="ncard-tag">Résultat</div></div><div class="ncard-body"><div class="ncard-date">Saison 2026-27</div><h3>Résultats &amp; calendrier</h3><p>Les résultats, classements et calendriers de tous les matchs sont disponibles directement ici, sur le site !</p></div></div>
     </div>
-    <div class="soon-box" style="margin-top:3rem"><div class="soon-chip">⚡ En développement</div><h4>On peaufine le site !</h4><p>On travaille actuellement sur l'amélioration du site pour votre confort.</p></div>
+    <div class="soon-box" style="margin-top:3rem"><div class="soon-chip">⚡ En développement</div><h4>On peaufine le site !</h4><p>On travaille actuellement sur l'amélioration du site et sur un système de statistiques personnalisées pour chaque joueur.</p></div>
   </div>
 </div>
 
@@ -1099,38 +1129,9 @@ function pushRoute(route) {
   } else {
     history.pushState(route, '', hash);
   }
-  trackPageView(route);
-}
-
-// ── SUIVI GOOGLE ANALYTICS PAR "PAGE" VIRTUELLE ──
-// Le site est une SPA (une seule page HTML), donc on envoie nous-mêmes un
-// événement page_view à chaque changement de route pour savoir, dans GA,
-// combien de temps les visiteurs passent sur chaque équipe / rubrique.
-function trackPageView(route) {
-  if (typeof gtag !== 'function') return;
-  const path = routeToHash(route).replace('#', '/');
-  let title = 'Accueil';
-
-  if (route.page === 'team' && route.teamId) {
-    const team = TEAMS.find(t => t.id === route.teamId);
-    title = team ? 'Équipe – ' + team.name : 'Équipe';
-  } else if (route.page === 'sub' && route.teamId) {
-    const team = TEAMS.find(t => t.id === route.teamId);
-    const subTitles = { effectif: 'Effectif', classement: 'Classement', calendrier: 'Calendrier & Résultats' };
-    title = (subTitles[route.sub] || route.sub) + (team ? ' – ' + team.name : '');
-  } else if (route.page && route.page !== 'home') {
-    title = route.page.charAt(0).toUpperCase() + route.page.slice(1);
-  }
-
-  gtag('event', 'page_view', {
-    page_title: title,
-    page_path: path,
-    page_location: location.origin + location.pathname + '#' + path.slice(1)
-  });
 }
 
 function applyRoute(route) {
-  trackPageView(route);
   if (route.page === 'team' && route.teamId) {
     renderTeam(route.teamId);
   } else if (route.page === 'sub' && route.teamId) {
@@ -1561,6 +1562,33 @@ function buildCarousel() {
   requestAnimationFrame(tick);
 }
 
+// ── POPUP TOURNOI ──
+function closeTournoiPopup() {
+  document.getElementById('tournoiOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+(function initTournoiPopup() {
+  const STORAGE_KEY = 'hbc_tournoi_popup_last_shown';
+  const ONE_DAY = 24 * 60 * 60 * 1000;
+  const last = localStorage.getItem(STORAGE_KEY);
+  const now = Date.now();
+  if (last && (now - parseInt(last, 10)) < ONE_DAY) return; // déjà vu aujourd'hui
+
+  setTimeout(() => {
+    const overlay = document.getElementById('tournoiOverlay');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    localStorage.setItem(STORAGE_KEY, String(now));
+  }, 2000);
+
+  document.getElementById('tournoiOverlay').addEventListener('click', (e) => {
+    if (e.target.id === 'tournoiOverlay') closeTournoiPopup();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeTournoiPopup();
+  });
+})();
+
 // ── INIT ──
 buildTeams();
 buildSchedule();
@@ -1573,63 +1601,6 @@ initReveal();
   const route = parseRoute(location.hash);
   history.replaceState(route, '', routeToHash(route));
   applyRoute(route);
-})();
-</script>
-
-<!-- ── COOKIE CONSENT ── -->
-<div id="cookieBanner">
-  <div class="cookie-card">
-    <div class="cookie-emoji">🍪</div>
-    <div class="cookie-txt">
-      <h4>Un cookie vient de tomber sur le terrain !</h4>
-      <p>On utilise juste Google Analytics pour savoir combien de supporters nous rendent visite. Vous acceptez qu'il reste sur le banc de touche ?</p>
-      <div class="cookie-btns">
-        <button id="cookieAccept">J'accepte</button>
-        <button id="cookieDecline">Je refuse</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-// ── GESTION DU CONSENTEMENT COOKIES ──
-(function(){
-  const GA_ID = 'G-704880QL4M';
-  const banner = document.getElementById('cookieBanner');
-  const consent = localStorage.getItem('cookie_consent');
-
-  function loadGA() {
-    if (window.gaLoaded) return;
-    window.gaLoaded = true;
-    const s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-    document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function(){ dataLayer.push(arguments); };
-    gtag('js', new Date());
-    // send_page_view désactivé : SPA en #hash, le suivi des "pages" est envoyé
-    // manuellement via trackPageView()
-    gtag('config', GA_ID, { send_page_view: false });
-  }
-
-  if (consent === 'accepted') {
-    loadGA();
-  } else if (consent !== 'declined') {
-    // pas encore de choix : on affiche le bandeau
-    requestAnimationFrame(() => banner.classList.add('show'));
-  }
-
-  document.getElementById('cookieAccept').addEventListener('click', function(){
-    localStorage.setItem('cookie_consent', 'accepted');
-    banner.classList.remove('show');
-    loadGA();
-  });
-
-  document.getElementById('cookieDecline').addEventListener('click', function(){
-    localStorage.setItem('cookie_consent', 'declined');
-    banner.classList.remove('show');
-  });
 })();
 </script>
 </body>
