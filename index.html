@@ -996,7 +996,6 @@ let currentTeam = null;
 const TRAINING = {
   loisir:  [{day:'Jeudi',   time:'20h00 – 21h30', lieu:'Collège Ausone'}],
   ecole:   [{day:'Samedi',  time:'10h00 – 11h00', lieu:'Collège Ausone'}],
-  u13f:     [{day:'Mercredi',time:'17h00 – 18h30', lieu:'Collège Ausone'}],
   u13f:    [{day:'Mercredi',time:'18h30 – 20h00', lieu:'Collège Ausone'}],
   u13g:    [{day:'Mercredi',time:'17h00 – 18h30', lieu:'Collège Ausone'}],
   u15f:    [{day:'Mardi',   time:'17h30 – 19h00', lieu:'Collège Ausone'}],
@@ -1004,8 +1003,8 @@ const TRAINING = {
   u18f:    [{day:'Vendredi',time:'19h00 – 20h30', lieu:'Sainte-Cluque'}],
   u18g:    [{day:'Mardi',   time:'17h30 – 19h30', lieu:'Sainte-Cluque'},{day:'Vendredi',time:'17h30 – 19h00', lieu:'Sainte-Cluque'}],
   srf:     [{day:'Mardi',   time:'19h30 – 21h00', lieu:'Collège Ausone'},{day:'Vendredi',time:'19h00 – 20h30', lieu:'Sainte-Cluque'}],
-  srg:    [{day:'Mardi',   time:'19h30 – 21h00', lieu:'Sainte-Cluque'},{day:'Vendredi',time:'20h30 – 22h00', lieu:'Sainte-Cluque'}],
-  srg:    [{day:'Mardi',   time:'19h30 – 21h00', lieu:'Sainte-Cluque'},{day:'Vendredi',time:'20h30 – 22h00', lieu:'Sainte-Cluque'}],
+  srg2:    [{day:'Mardi',   time:'19h30 – 21h00', lieu:'Sainte-Cluque'},{day:'Vendredi',time:'20h30 – 22h00', lieu:'Sainte-Cluque'}],
+  srg1:    [{day:'Mardi',   time:'19h30 – 21h00', lieu:'Sainte-Cluque'},{day:'Vendredi',time:'20h30 – 22h00', lieu:'Sainte-Cluque'}],
 };
 
 function renderNav(id, subject) {
@@ -1291,7 +1290,6 @@ const SHEET_CSV_URLS = {
   u15g:          'https://docs.google.com/spreadsheets/d/e/2PACX-1vTHtdFedebW69kCLndSiseuZXca_Tumv9XVCAbvDYnfOQ0gPU4N2Y78JlDmE0VE_P6iDl41GLXe7t12/pub?gid=935331897&single=true&output=csv',
   u13f:          'https://docs.google.com/spreadsheets/d/e/2PACX-1vTHtdFedebW69kCLndSiseuZXca_Tumv9XVCAbvDYnfOQ0gPU4N2Y78JlDmE0VE_P6iDl41GLXe7t12/pub?gid=181506747&single=true&output=csv',
   u13g:          'https://docs.google.com/spreadsheets/d/e/2PACX-1vTHtdFedebW69kCLndSiseuZXca_Tumv9XVCAbvDYnfOQ0gPU4N2Y78JlDmE0VE_P6iDl41GLXe7t12/pub?gid=1693896440&single=true&output=csv',
-  u11:           'https://docs.google.com/spreadsheets/d/e/2PACX-1vTHtdFedebW69kCLndSiseuZXca_Tumv9XVCAbvDYnfOQ0gPU4N2Y78JlDmE0VE_P6iDl41GLXe7t12/pub?gid=2032696759&single=true&output=csv',
   'ecole du hand':'https://docs.google.com/spreadsheets/d/e/2PACX-1vTHtdFedebW69kCLndSiseuZXca_Tumv9XVCAbvDYnfOQ0gPU4N2Y78JlDmE0VE_P6iDl41GLXe7t12/pub?gid=1860051830&single=true&output=csv',
   loisir:        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTHtdFedebW69kCLndSiseuZXca_Tumv9XVCAbvDYnfOQ0gPU4N2Y78JlDmE0VE_P6iDl41GLXe7t12/pub?gid=933887710&single=true&output=csv',
 };
