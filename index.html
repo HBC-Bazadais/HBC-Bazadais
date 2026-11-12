@@ -230,12 +230,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);o
 .eff-f.on{color:var(--ink);border-color:var(--rose)}
 /* Grille joueurs style PSG */
 .players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;border-radius:0;overflow:visible}
-.pcard{background:var(--card);transition:background var(--t);position:relative;overflow:hidden;cursor:default;border-radius:var(--radius);border:1px solid var(--border-navy);box-shadow:var(--shadow-sm)}
+.pcard{background:var(--card);transition:background var(--t);position:relative;overflow:hidden;border-radius:var(--radius);border:1px solid var(--border-navy);box-shadow:var(--shadow-sm)}
 .pcard:hover{background:rgba(234,59,121,.05)}
 .pcard-photo{height:260px;background:linear-gradient(160deg,var(--blue-pale) 0%,rgba(234,59,121,.08) 100%);display:flex;align-items:flex-end;justify-content:center;position:relative;overflow:hidden}
 .pcard-photo img{position:absolute;bottom:0;height:100%;object-fit:cover;object-position:top center;width:100%}
-.pcard-photo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s ease;transform-origin:top center}
+.pcard-photo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s ease;transform-origin:top center;will-change:transform}
 .pcard:hover .pcard-photo-img{transform:scale(1.07)}
+.pcard-photo .pcard-photo-img{top:0;left:0;right:auto;bottom:auto;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;object-position:center top;transform-origin:0 0;transform:translate(var(--tx,0%),var(--ty,0%)) scale(var(--s,1))}
+.pcard:hover .pcard-photo .pcard-photo-img{transform:translate(var(--tx,0%),var(--ty,0%)) scale(calc(var(--s,1)*1.05))}
+.pcard-photo-img.alt{opacity:0;transition:opacity .35s ease,transform .5s ease}
+.pcard:hover .pcard-photo-img.alt,.pcard.flip .pcard-photo-img.alt{opacity:1}
+.pcard{cursor:pointer}
 .pcard-photo-placeholder{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:110px;height:180px;opacity:.2;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
 .pcard-photo-placeholder svg{width:100%;height:100%}
 .pcard-num-big{position:absolute;bottom:-8px;left:.6rem;font-family:'Bebas Neue',sans-serif;font-size:5.5rem;color:rgba(22,35,63,.06);line-height:1;pointer-events:none;letter-spacing:-.02em}
@@ -252,7 +257,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);o
 .coach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
 .coach-card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border-navy);box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem}
 .coach-photo{width:56px;height:56px;border-radius:50%;overflow:hidden;flex-shrink:0;background:linear-gradient(160deg,var(--blue-pale) 0%,rgba(234,59,121,.08) 100%);display:flex;align-items:center;justify-content:center}
-.coach-photo img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.coach-photo img{width:100%;height:auto;aspect-ratio:auto 2/3;object-fit:cover;align-self:flex-start;flex-shrink:0;transform-origin:0 0;transform:translate(var(--tx,0%),var(--ty,0%)) scale(var(--s,1))}
 .coach-photo svg{width:28px;height:28px;opacity:.3}
 .coach-info-role{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--rose);margin-bottom:.15rem}
 .coach-info-fname{font-size:.7rem;color:rgba(22,35,63,.4);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.05rem}
@@ -676,7 +681,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   <div class="page-hero"><div class="page-hero-inner"><div class="ph-label">Le club en direct</div><h1 class="ph-h1">Actualités</h1></div></div>
   <div class="container" style="padding-top:3rem;padding-bottom:3rem">
     <div class="news-grid">
-      <a href="https://cirqueabandonne.github.io/cirque-abandonne/" target="_blank" style="text-decoration:none;color:inherit;display:block"><div class="ncard"><div class="ncard-img" style="padding:0;overflow:hidden;background:#E9F1FA"><img src="https://raw.githubusercontent.com/albanbontemps33-cell/hbcbazadais/main/cirque.png" alt="Le Cirque Abandonné" style="width:100%;height:100%;object-fit:cover;display:block"><div class="ncard-tag">Événement</div></div><div class="ncard-body"><div class="ncard-date">Saison 2026-27</div><h3>Le Cirque Abandonné</h3><p>Revient en 2026 pour effrayer les plus petits et les plus grands ! Cliquez sur le cadre pour plus d'infos !</p></div></div></a>
       <div class="ncard" onclick="goNav('teams')" style="cursor:pointer"><div class="ncard-img" style="padding:0;overflow:hidden;background:#E9F1FA"><img src="https://raw.githubusercontent.com/albanbontemps33-cell/hbcbazadais/main/fin.jpg" alt="Suivez nos équipes" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"><div class="ncard-tag">Résultat</div></div><div class="ncard-body"><div class="ncard-date">Saison 2026-27</div><h3>Suivez nos équipes</h3><p>Retrouvez les résultats et actualités de toutes nos équipes tout au long de la saison.</p></div></div>
       <div class="ncard" onclick="goNav('teams')" style="cursor:pointer"><div class="ncard-img" style="padding:0;overflow:hidden;background:#E9F1FA"><img src="https://raw.githubusercontent.com/albanbontemps33-cell/hbcbazadais/main/amettre.png" alt="Résultats et calendrier" style="width:100%;height:100%;object-fit:cover;display:block"><div class="ncard-tag">Résultat</div></div><div class="ncard-body"><div class="ncard-date">Saison 2026-27</div><h3>Résultats &amp; calendrier</h3><p>Les résultats, classements et calendriers de tous les matchs sont disponibles directement ici, sur le site !</p></div></div>
     </div>
@@ -958,12 +962,66 @@ const TEAMS = [
   {id:'ecole',cat:'École de Handball',name:'École du Hand',sheet:'ecole du hand',coach1:{fname:'Prénom coach',lname:'Nom coach',photo:''},coach2:{fname:'Prénom coach',lname:'Nom coach',photo:''},roster:[]},
   {id:'u13',cat:'Catégorie U13',name:'-13 Filles 2',sheet:'u13',coach1:{fname:'Prénom coach',lname:'Nom coach',photo:''},coach2:{fname:'Prénom coach',lname:'Nom coach',photo:''},roster:[]},
   {id:'u13f',cat:'Catégorie U13',name:'-13 Filles 1',sheet:'u13f',coach1:{fname:'Prénom coach',lname:'Nom coach',photo:''},coach2:{fname:'Prénom coach',lname:'Nom coach',photo:''},roster:[]},
-  {id:'u13g',cat:'Catégorie U13',name:'-13 Garçons',sheet:'u13g',coach1:{fname:'Prénom coach',lname:'Nom coach',photo:''},coach2:{fname:'Prénom coach',lname:'Nom coach',photo:''},roster:[]},
-  {id:'u15f',cat:'Catégorie U15',name:'-15 Filles',sheet:'u15f',coach1:{fname:'Prénom coach',lname:'Nom coach',photo:''},coach2:{fname:'Prénom coach',lname:'Nom coach',photo:''},roster:[]},
+  {id:'u13g',cat:'Catégorie U13',name:'-13 Garçons',sheet:'u13g',coach1:{fname:'Marc',lname:'Galineau',photo:'u13g/coach1.jpg'},coach2:{fname:'Kévin',lname:'Courtois',photo:'u13g/coach2.jpg'},roster:[{fname:'Iloé',lname:'',num:'11',photo:'u13g/iloe-1.jpg',photo2:'u13g/iloe-2.jpg',pos:['Demi-centre']},
+    {fname:'Arthur',lname:'',num:'9',pos:['Demi-centre']},
+    {fname:'Victor',lname:'',num:'4',pos:['Arrière']},
+    {fname:'Lény',lname:'',num:'8',pos:['Arrière']},
+    {fname:'Lucien',lname:'',num:'',pos:['Arrière']},
+    {fname:'Noha',lname:'',num:'9',pos:['Arrière']},
+    {fname:'Solal',lname:'',num:'3',pos:['Arrière']},
+    {fname:'Diego',lname:'',num:'11',pos:['Pivot']},
+    {fname:'Charles',lname:'',num:'10',pos:['Pivot']},
+    {fname:'Timéo',lname:'',num:'5',photo:'u13g/timeo1.jpg',photo2:'u13g/timeo2.jpg',pos:['Gardien']},
+    {fname:'Mathéis',lname:'',num:'14',pos:['Pivot']},
+    {fname:'Thomas',lname:'',num:'5',pos:['Ailier']},
+    {fname:'Sacha',lname:'',num:'6',pos:['Ailier']},
+    {fname:'Maël',lname:'',num:'3',pos:['Ailier']},
+    {fname:'Dario',lname:'',num:'13',pos:['Ailier']}]},
+  {id:'u15f',cat:'Catégorie U15',name:'-15 Filles',sheet:'u15f',coach1:{fname:'Nicolas',lname:'Mangeard',photo:''},coach2:null,roster:[{fname:'Chloé',lname:'Robert',num:'13',fit:[1.182,-10.4,-14.1],fit2:[1.396,-17.4,-25],pos:['Gardienne']},
+    {fname:'Andréa',lname:'Coulomb',num:'6',fit:[1,0,-13.9],fit2:[1,0,-13.7],pos:['Arrière']},
+    {fname:'Maëly',lname:'Saint Florin',num:'9',fit:[1,0,-2],fit2:[1,0,-2.3],photo:'u15f/maely-saint1.jpg',photo2:'u15f/maely-saint2.jpg',pos:['Gardienne']},
+    {fname:'Eloa',lname:'Calcas',num:'',pos:['Gardienne']},
+    {fname:'Paola',lname:'Teixeira',num:'7',fit:[1.072,-4.7,-8.5],fit2:[1.078,-7.8,-1.8],pos:['Ailière']},
+    {fname:'Léna',lname:'Corre',num:'11',fit:[1.149,-12.7,-15.1],fit2:[1,0,-8.5],pos:['Arrière']},
+    {fname:'Julie',lname:'Couthures',num:'10',fit:[1.13,-11.3,-17.8],fit2:[1.308,-12.4,-18.3],pos:['Ailière']},
+    {fname:'Mallaury',lname:'Bonin',num:'',pos:['Ailière']},
+    {fname:'Pauline',lname:'Barbe',num:'4',fit:[1.292,-16.6,-17.6],fit2:[1.056,-2.6,0],pos:['Pivot']},
+    {fname:'Zelie',lname:'Valas',num:'',pos:['Demi-centre']},
+    {fname:'Lilou',lname:'Mangeard',num:'',pos:['Demi-centre']},
+    {fname:'Lysia',lname:'Chambon',num:'',pos:['Ailière']},
+    {fname:'Lynaïa',lname:'Dufrenoy',num:'',pos:['Ailière']},
+    {fname:'Camille',lname:'Flé',num:'',pos:['Ailière']}]},
   {id:'u15g',cat:'Catégorie U15',name:'-15 Garçons',sheet:'u15g',coach1:{fname:'Prénom coach',lname:'Nom coach',photo:''},coach2:{fname:'Prénom coach',lname:'Nom coach',photo:''},roster:[]},
   {id:'u18f',cat:'Catégorie U18',name:'-18 Filles',sheet:'u18f',coach1:{fname:'Prénom coach',lname:'Nom coach',photo:''},coach2:{fname:'Prénom coach',lname:'Nom coach',photo:''},roster:[]},
-  {id:'u18g',cat:'Catégorie U18',name:'-18 Garçons',sheet:'u18g',coach1:{fname:'Prénom coach',lname:'Nom coach',photo:''},coach2:{fname:'Prénom coach',lname:'Nom coach',photo:''},roster:[]},
-  {id:'srf',cat:'Compétition Senior',name:'Seniors Filles',sheet:'srf',coach1:{fname:'Prénom coach',lname:'Nom coach',photo:''},coach2:{fname:'Prénom coach',lname:'Nom coach',photo:''},roster:[]},
+  {id:'u18g',cat:'Catégorie U18',name:'-18 Garçons',sheet:'u18g',coach1:{fname:'Laurent',lname:'Espagnet',photo:''},coach2:{fname:'Maxime',lname:'Carlier',photo:''},coach3:{fname:'Gaëtan',lname:'Cantin',photo:''},roster:[{fname:'Hugo',lname:'Descoubes',num:'16',pos:['Gardien']},
+    {fname:'Benjamin',lname:'Cubertafond',num:'12',pos:['Gardien']},
+    {fname:'Matisse',lname:'Espagnet',num:'11',pos:['Arrière']},
+    {fname:'Mael',lname:'Espagnet',num:'3',pos:['Ailier']},
+    {fname:'Aubin',lname:'Dupiol',num:'10',pos:['Arrière']},
+    {fname:'Migwel',lname:'Gineste',num:'9',pos:['Arrière']},
+    {fname:'Théo',lname:'Dourthe',num:'14',pos:['Ailier']},
+    {fname:'Dorian',lname:'Cattiaux',num:'4',pos:['Ailier']},
+    {fname:'Mathys',lname:'Dengreville',num:'',pos:['Ailier']},
+    {fname:'Iban',lname:'Le Bras',num:'13',photo:'u18g/iban-lebras1.jpg',photo2:'u18g/iban-lebras2.jpg',pos:['Pivot']},
+    {fname:'Rafaël',lname:'Carlier',num:'8',photo:'u18g/raphael-carlier1.jpg',photo2:'u18g/raphael-carlier2.jpg',pos:['Pivot']},
+    {fname:'Loric',lname:'Personnaz',num:'',pos:['Arrière']},
+    {fname:'Louis',lname:'Dubar',num:'6',photo:'u18g/noa-dubar1.jpg',photo2:'u18g/noa-dubar2.jpg',pos:['Ailier']},
+    {fname:'Noa',lname:'Dubar',num:'7',photo:'u18g/louis-dubar1.jpg',photo2:'u18g/louis-dubar2.jpg',pos:['Demi-centre']},
+    {fname:'Mattéo',lname:'Delannoy',num:'2',pos:['Ailier']}]},
+  {id:'srf',cat:'Compétition Senior',name:'Seniors Filles',sheet:'srf',coach1:{fname:'Pierre',lname:'Contant',photo:'srf/coach1.jpg',fit:[1.821,-38.5,-19.6]},coach2:{fname:'Bastien',lname:'Poisson',photo:'srf/coach2.jpg',fit:[1.761,-42.6,-21.3]},roster:[{fname:'Camille',lname:'Léglise',num:'18',fit:[1.486,-24.1,-23.3],fit2:[1,0,-5.6],pos:['Ailière']},
+    {fname:'Charlotte',lname:'Paillaugue',num:'7',fit:[1.072,-7.2,-7.2],fit2:[1,0,-2],pos:['Ailière']},
+    {fname:'Clémence',lname:'Sorbier',num:'17',fit:[1.268,-16.1,-8.9],fit2:[1,0,-5.8],pos:['Ailière']},
+    {fname:'Célia',lname:'Labarchède',num:'12',fit:[1.03,0,-0.9],fit2:[1,0,-6.1],pos:['Gardienne']},
+    {fname:'Déborah',lname:'Doux',num:'8',fit:[1.149,-8.4,-7.2],fit2:[1,0,0],pos:['Pivot']},
+    {fname:'Jessica',lname:'Labrouche',num:'1',fit:[1,0,-6.6],fit2:[1,0,-7.5],pos:['Gardienne']},
+    {fname:'Laura',lname:'Descacq',num:'',pos:['Ailière']},
+    {fname:'Loriane',lname:'Toutenuit',num:'9',fit:[1.351,-20.4,-8.6],fit2:[1,0,-4.7],pos:['Demi-centre']},
+    {fname:'Maylis',lname:'Brotet',num:'',pos:['Arrière']},
+    {fname:'Sabrina',lname:'Labbe',num:'',pos:['Ailière']},
+    {fname:'Valérie',lname:'Labarchède',num:'13',fit:[1.03,0,0],fit2:[1.056,-4.2,-3.4],pos:['Pivot']},
+    {fname:'Victoria',lname:'Moretto',num:'5',fit:[1.005,-0.5,-7],fit2:[1,0,-3],pos:['Demi-centre']},
+    {fname:'Chloé',lname:'Léglise',num:'3',fit:[1.169,-8.1,-1.8],fit2:[1,0,-5.3],pos:['Arrière']},
+    {fname:'Noélane',lname:'Brotet',num:'10',fit:[1.444,-18.3,-16.1],fit2:[1,0,-7.7],pos:['Pivot']}]},
   {id:'srg2',cat:'Compétition Senior',name:'Seniors Garçons 2',sheet:'srg2',coach1:{fname:'Prénom coach',lname:'Nom coach',photo:''},coach2:{fname:'Prénom coach',lname:'Nom coach',photo:''},roster:[]},
   {id:'srg1',cat:'Compétition Senior',name:'Seniors Garçons 1',sheet:'srg1',coach1:{fname:'Prénom coach',lname:'Nom coach',photo:''},coach2:{fname:'Prénom coach',lname:'Nom coach',photo:''},roster:[]},
 ];
@@ -1207,12 +1265,36 @@ function backToTeam() {
   history.back();
 }
 
+// Photos joueurs : dossier GitHub = team.folder (par défaut l'id de l'équipe)
+// Fichiers : prenom-nom1.jpg (photo de base) et prenom-nom2.jpg (au survol)
+// La 2e photo ne se charge qu'au premier survol (ou au toucher) : moitié moins de données au départ
+function ffLoadAlt(card) {
+  const i = card.querySelector('img.alt');
+  if (i && i.dataset.src) { i.src = i.dataset.src; delete i.dataset.src; }
+}
+function slugName(v) {
+  return String(v || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+function playerPhotos(team, p) {
+  const folder = team.folder || team.id;
+  const base = GH + folder + '/' + slugName(p.fname) + (slugName(p.lname) ? '-' + slugName(p.lname) : '');
+  const src1 = p.photo ? GH + p.photo : base + '1.jpg';
+  const src2 = p.photo2 ? GH + p.photo2 : base + '2.jpg';
+  const alt = ffEsc((p.fname + ' ' + (p.lname || '')).trim());
+  // Cadrage par joueur (visages alignés) : [zoom, décalage X %, décalage Y %]
+  const fitStyle = f => f ? ' style="--s:' + f[0] + ';--tx:' + f[1] + '%;--ty:' + f[2] + '%"' : '';
+  return '<img class="pcard-photo-img"' + fitStyle(p.fit) + ' src="' + src1 + '" alt="' + alt + '" onerror="this.onerror=function(){this.style.display=\'none\'};this.src=\'' + src2 + '\'" loading="lazy" decoding="async">' +
+         '<img class="pcard-photo-img alt"' + fitStyle(p.fit2 || p.fit) + ' data-src="' + src2 + '" alt="" aria-hidden="true" decoding="async" onerror="this.style.display=\'none\'">';
+}
+
 function buildSub(type, team) {
   const subContainer = document.getElementById('subContent');
   if (type === 'effectif') {
     const coaches = [
-      team.coach1 ? {label:'Coach 1', fname:team.coach1.fname, lname:team.coach1.lname, photo:team.coach1.photo} : null,
-      team.coach2 ? {label:'Coach 2', fname:team.coach2.fname, lname:team.coach2.lname, photo:team.coach2.photo} : null,
+      team.coach1 ? {label:'Coach 1', fname:team.coach1.fname, lname:team.coach1.lname, photo:team.coach1.photo, fit:team.coach1.fit} : null,
+      team.coach2 ? {label:'Coach 2', fname:team.coach2.fname, lname:team.coach2.lname, photo:team.coach2.photo, fit:team.coach2.fit} : null,
+      team.coach3 ? {label:'Coach 3', fname:team.coach3.fname, lname:team.coach3.lname, photo:team.coach3.photo, fit:team.coach3.fit} : null,
     ].filter(Boolean);
 
     const coachHTML = coaches.length ? `
@@ -1223,7 +1305,7 @@ function buildSub(type, team) {
             <div class="coach-card">
               <div class="coach-photo">
                 ${c.photo
-                  ? `<img src="${GH}${c.photo}" alt="${c.fname} ${c.lname}" onerror="this.style.display='none'" loading="lazy">`
+                  ? `<img${c.fit ? ` style="--s:${c.fit[0]};--tx:${c.fit[1]}%;--ty:${c.fit[2]}%"` : ''} src="${GH}${c.photo}" alt="${c.fname} ${c.lname}" onerror="this.style.display='none'" loading="lazy">`
                   : `<svg viewBox="0 0 80 140" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="40" cy="22" rx="18" ry="18" fill="rgba(234,59,121,0.3)"/><path d="M8 120 C8 80 18 65 40 62 C62 65 72 80 72 120" fill="rgba(234,59,121,0.2)"/></svg>`}
               </div>
               <div class="coach-info">
@@ -1240,30 +1322,31 @@ function buildSub(type, team) {
       return;
     }
 
-    const positions = ['Tous', ...new Set(team.roster.map(p => p.pos).filter(Boolean))];
+    const posList = p => Array.isArray(p.pos) ? p.pos : (p.pos ? [p.pos] : []);
+    const positions = ['Tous', ...new Set(team.roster.flatMap(posList))];
     const filters = positions.map((p,i) =>
       `<span class="eff-f${i===0?' on':''}" onclick="filterPos(this,'${p}')">${p||'Tous'}</span>`).join('');
 
-    const sorted = [...team.roster].sort((a,b) => parseInt(a.num) - parseInt(b.num));
+    const numOf = p => { const n = parseInt(p.num); return isNaN(n) ? 9999 : n; };
+    const sorted = [...team.roster].sort((a,b) => numOf(a) - numOf(b));
     const cards = sorted.map(p => `
-      <div class="pcard" data-pos="${p.pos}">
+      <div class="pcard" data-pos="${posList(p).join('|')}" onmouseenter="ffLoadAlt(this)" onclick="ffLoadAlt(this);this.classList.toggle('flip')">
         <div class="pcard-photo">
-          ${p.photo ? `<img class="pcard-photo-img" src="${GH}${p.photo}" alt="${p.fname} ${p.lname}" onerror="this.style.display='none'" loading="lazy">` : ''}
+          ${playerPhotos(team, p)}
           <div class="pcard-photo-placeholder">
             <svg viewBox="0 0 80 140" fill="none" xmlns="http://www.w3.org/2000/svg">
               <ellipse cx="40" cy="22" rx="18" ry="18" fill="rgba(234,59,121,0.3)"/>
               <path d="M8 120 C8 80 18 65 40 62 C62 65 72 80 72 120" fill="rgba(234,59,121,0.2)"/>
             </svg>
           </div>
-          <div class="pcard-num-big">${p.num}</div>
+          ${p.num ? `<div class="pcard-num-big">${p.num}</div>` : ''}
         </div>
         <div class="pcard-info">
-          <div class="pcard-top-row">
-            <div class="pcard-num">${p.num}</div>
-            ${p.pos ? `<div class="pcard-pos">${p.pos}</div>` : ''}
+          <div class="pcard-top-row" style="min-height:1.4rem">
+            <div class="pcard-num">${p.num || ''}</div>
+            ${posList(p).length ? `<div class="pcard-pos">${posList(p).join(' · ')}</div>` : ''}
           </div>
-          <div class="pcard-fname">${p.fname}</div>
-          <div class="pcard-lname">${p.lname}</div>
+          ${p.lname ? `<div class="pcard-fname">${p.fname}</div><div class="pcard-lname">${p.lname}</div>` : `<div class="pcard-fname">&nbsp;</div><div class="pcard-lname">${p.fname}</div>`}
         </div>
       </div>`).join('');
 
@@ -1603,7 +1686,7 @@ function filterPos(el, pos) {
   document.querySelectorAll('.eff-f').forEach(f => f.classList.remove('on'));
   el.classList.add('on');
   document.querySelectorAll('#pgrid .pcard').forEach(c => {
-    c.style.display = (pos === 'Tous' || c.dataset.pos === pos) ? '' : 'none';
+    c.style.display = (pos === 'Tous' || c.dataset.pos.split('|').includes(pos)) ? '' : 'none';
   });
 }
 
